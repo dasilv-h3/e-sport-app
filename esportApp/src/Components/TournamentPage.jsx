@@ -1,5 +1,5 @@
 const TournamentPage = () => {
     return (
-        <h1></h1>
+        <h1>TEST</h1>
     )
 }
