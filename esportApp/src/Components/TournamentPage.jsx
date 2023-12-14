@@ -3,3 +3,4 @@ const TournamentPage = () => {
         <h1>TEST</h1>
     )
 }
+export default TournamentPage;

@@ -1,17 +1,22 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
-import Formulaire from "./Components/Login/Login"
+import Login from "./Components/Login/Login"
 import Register from "./Components/Register/Register"
+import TournamentPage from "./Components/TournamentPage"
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Formulaire />
+    element: <Login />
   },
   {
     path: "/register",
     element: <Register />
+  },
+  {
+    path: "/tournament",
+    element: <TournamentPage />
   }
 ]);
 
