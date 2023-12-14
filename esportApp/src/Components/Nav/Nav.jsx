@@ -5,8 +5,8 @@ const Nav = () => {
     return (
         <>
             <nav>
-                <Link to = "/Tournament"><img className='home' src="../../../public/img/home.png" alt="home icon" /></Link>
-                <img className='deconnexion' src="../../../public/img/deco.png" alt="deconnexion" />
+                <Link to = "/Tournament"><img className='home' src="/img/home.png" alt="home icon" /></Link>
+                <img className='deconnexion' src="/img/deco.png" alt="deconnexion" />
             </nav>
         </>
     )

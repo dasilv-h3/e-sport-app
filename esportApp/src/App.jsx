@@ -19,19 +19,19 @@ const router = createBrowserRouter([
     element: <Register />
   },
   {
-    path: "/Tournament",
+    path: "/tournament",
     element: <TournamentPage />
   },
   {
-    path: "/Tournament/Lol",
+    path: "/tournament/lol",
     element: <Lol />  
   },
   {
-    path: "/Tournament/Rl",
+    path: "/tournament/rl",
     element: <Rl />
   },
   {
-    path: "/Tournament/Cs",
+    path: "/tournament/cs",
     element: <Cs />
   }
 ]);
