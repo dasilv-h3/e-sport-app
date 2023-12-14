@@ -1,0 +1,19 @@
+nav {
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home {
+    float:left;
+}
+
+.deconnexion {
+    align-items: center;
+    margin-right: 20px;
+}
+
+img {
+    width: 50px;
+    padding: 5px;
+}
