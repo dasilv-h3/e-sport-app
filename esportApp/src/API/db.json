@@ -18,11 +18,16 @@
         },
         {
             "id":2,
+<<<<<<< HEAD
             "username": "John",
             "password": "John123",
             "tlol": "False",
             "trl": "False",
             "tcs": "False"
+=======
+            "username": "JohnDOE",
+            "password": "JohnDOE123"
+>>>>>>> 57deef7354fb27ac914e6c11ac07f1fc61bad430
         }
     ]
 
