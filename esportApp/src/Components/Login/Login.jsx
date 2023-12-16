@@ -1,81 +1,79 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
-// import userData from '../../API/db.json';
-import { useNavigate } from "react-router-dom";
-import { checkUser } from "../../services/api";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleLogging = (e) => {
-        e.preventDefault();
+    const handleLogin = async (e) => {
+    e.preventDefault();
 
-        // FormData permet de récupérer la saisie d'un formulaire
-        const type = Object.fromEntries(new FormData(e.target));
+    // Simuler une recherche d'utilisateur dans le fichier db.json
+    try {
+        const response = await fetch('http://localhost:3000/users');
+        const users = await response.json();
 
-        // console.log(type);
+        const user = users.find(
+        (u) => u.username === username && u.password === password
+        );
 
-        checkUser(type).then( data => console.log(data) );
+        if (user) {
+        console.log('Login successful');
+        user.isLogged = true;
 
-        // const user = users.find(
-        //     (user) => users.username === username && users.password === password
-        // )
-        
-        if(type) {
-            setIsLoggedIn(true);
-            console.log("Connecter avec succes");
-            navigate("/tournament")
+        // Effectuer une requête PUT pour mettre à jour le fichier db.json
+        await fetch(`http://localhost:3000/users/${user.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+        });
+        navigate('/tournament');
         } else {
-            console.log("t'es pas connecter");
+        console.error('Login failed');
         }
+    } catch (error) {
+        console.error('Error during login', error);
+    }
     };
 
     return (
-    <main>
-        <section className="register-container"><div className="root-container">
-            <div className="box-container">
-                <div className="controller">
-                Login
-                </div>
-            </div>
-        </div>
-
+    <section className="login-container">
         <div className="inner-container">
-            <form onSubmit={handleLogging} className="box">
-                <div className="input-group">
-                    <label htmlFor="username">Username</label>
-                    <input
-                    type="text" 
-                    name="username" 
-                    placeholder="Username" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} required/>
-                </div>
-                <div className="input-group">
-                    <label htmlFor="password">Password</label>
-                    <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="Password" 
-                    value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                </div>
-                <div>
-                    <button type="submit" className="login-btn" >Login</button>
-
-
-                    {isLoggedIn && <p>Connecté avec succés!</p>}
-                    <Link to="/register">Register</Link>
-                </div>
-            </form>
+        <h3 className="login-title">Login</h3>
+        <form className="form-container" onSubmit={handleLogin}>
+            <div className="input-item">
+            <label htmlFor="username">Username</label>
+            <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            </div>
+            <div className="input-item">
+            <label htmlFor="password">Password</label>
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            </div>
+            <div>
+            <Link to="/register">Register</Link>
+            <button type="submit" className="login-btn">
+                Login
+            </button>
+            </div>
+        </form>
         </div>
-        </section>
-        
-    </main>
-);
+    </section>
+    );
 };
 
 export default Login;
