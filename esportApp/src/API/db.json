@@ -3,11 +3,20 @@
     {
       "username": "John",
       "password": "John123",
-      "tlol": "False",
-      "trl": "False",
-      "tcs": "False",
+      "tlol": true,
+      "trl": false,
+      "tcs": false,
       "isLogged": false,
       "id": 1
+    },
+    {
+      "username": "ert",
+      "password": "ert",
+      "tlol": false,
+      "trl": true,
+      "tcs": false,
+      "isLogged": false,
+      "id": 3
     }
   ]
 }

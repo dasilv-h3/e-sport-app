@@ -1,3 +1,16 @@
-:root {
+* {
   font-family: Arial;
+  margin: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+}
+
+img, svg {
+  max-width: 100%;
 }
